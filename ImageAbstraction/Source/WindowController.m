@@ -16,7 +16,7 @@
 
 - (id)init
 {
-	return [super initWithWindowNibName:@"WindowController"];
+	return [super initWithWindowNibName:@"MainWindow"];
 }
 
 @end
