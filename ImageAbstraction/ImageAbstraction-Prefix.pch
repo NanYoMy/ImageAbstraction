@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ImageAbstraction' target in the 'ImageAbstraction' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
