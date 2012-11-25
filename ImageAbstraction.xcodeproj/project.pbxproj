@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		35F5ACA416628DA500ED82B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F5ACA316628DA500ED82B6 /* Cocoa.framework */; };
-		35F5ACAE16628DA500ED82B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACAC16628DA500ED82B6 /* InfoPlist.strings */; };
-		35F5ACB016628DA500ED82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACAF16628DA500ED82B6 /* main.m */; };
-		35F5ACB416628DA500ED82B6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACB216628DA500ED82B6 /* Credits.rtf */; };
-		35F5ACB716628DA500ED82B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACB616628DA500ED82B6 /* AppDelegate.m */; };
-		35F5ACBA16628DA500ED82B6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACB816628DA500ED82B6 /* MainMenu.xib */; };
+		35F5ACD516628FA800ED82B6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACCA16628FA800ED82B6 /* MainMenu.xib */; };
+		35F5ACD616628FA800ED82B6 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACCB16628FA800ED82B6 /* WindowController.xib */; };
+		35F5ACD716628FA800ED82B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCE16628FA800ED82B6 /* AppDelegate.m */; };
+		35F5ACD816628FA800ED82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCF16628FA800ED82B6 /* main.m */; };
+		35F5ACD916628FA800ED82B6 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACD116628FA800ED82B6 /* WindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +21,15 @@
 		35F5ACA616628DA500ED82B6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		35F5ACA716628DA500ED82B6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		35F5ACA816628DA500ED82B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		35F5ACAB16628DA500ED82B6 /* ImageAbstraction-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageAbstraction-Info.plist"; sourceTree = "<group>"; };
-		35F5ACAD16628DA500ED82B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		35F5ACAF16628DA500ED82B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		35F5ACB116628DA500ED82B6 /* ImageAbstraction-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageAbstraction-Prefix.pch"; sourceTree = "<group>"; };
-		35F5ACB316628DA500ED82B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		35F5ACB516628DA500ED82B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		35F5ACB616628DA500ED82B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		35F5ACB916628DA500ED82B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		35F5ACCA16628FA800ED82B6 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		35F5ACCB16628FA800ED82B6 /* WindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
+		35F5ACCD16628FA800ED82B6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		35F5ACCE16628FA800ED82B6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		35F5ACCF16628FA800ED82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35F5ACD016628FA800ED82B6 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		35F5ACD116628FA800ED82B6 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		35F5ACD316628FA800ED82B6 /* ImageAbstraction-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageAbstraction-Info.plist"; sourceTree = "<group>"; };
+		35F5ACD416628FA800ED82B6 /* ImageAbstraction-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageAbstraction-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,24 +83,41 @@
 		35F5ACA916628DA500ED82B6 /* ImageAbstraction */ = {
 			isa = PBXGroup;
 			children = (
-				35F5ACB516628DA500ED82B6 /* AppDelegate.h */,
-				35F5ACB616628DA500ED82B6 /* AppDelegate.m */,
-				35F5ACB816628DA500ED82B6 /* MainMenu.xib */,
-				35F5ACAA16628DA500ED82B6 /* Supporting Files */,
+				35F5ACC916628FA800ED82B6 /* Interface */,
+				35F5ACCC16628FA800ED82B6 /* Source */,
+				35F5ACD216628FA800ED82B6 /* SupportingFiles */,
 			);
 			path = ImageAbstraction;
 			sourceTree = "<group>";
 		};
-		35F5ACAA16628DA500ED82B6 /* Supporting Files */ = {
+		35F5ACC916628FA800ED82B6 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				35F5ACAB16628DA500ED82B6 /* ImageAbstraction-Info.plist */,
-				35F5ACAC16628DA500ED82B6 /* InfoPlist.strings */,
-				35F5ACAF16628DA500ED82B6 /* main.m */,
-				35F5ACB116628DA500ED82B6 /* ImageAbstraction-Prefix.pch */,
-				35F5ACB216628DA500ED82B6 /* Credits.rtf */,
+				35F5ACCA16628FA800ED82B6 /* MainMenu.xib */,
+				35F5ACCB16628FA800ED82B6 /* WindowController.xib */,
 			);
-			name = "Supporting Files";
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		35F5ACCC16628FA800ED82B6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				35F5ACCD16628FA800ED82B6 /* AppDelegate.h */,
+				35F5ACCE16628FA800ED82B6 /* AppDelegate.m */,
+				35F5ACCF16628FA800ED82B6 /* main.m */,
+				35F5ACD016628FA800ED82B6 /* WindowController.h */,
+				35F5ACD116628FA800ED82B6 /* WindowController.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		35F5ACD216628FA800ED82B6 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				35F5ACD316628FA800ED82B6 /* ImageAbstraction-Info.plist */,
+				35F5ACD416628FA800ED82B6 /* ImageAbstraction-Prefix.pch */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,9 +171,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35F5ACAE16628DA500ED82B6 /* InfoPlist.strings in Resources */,
-				35F5ACB416628DA500ED82B6 /* Credits.rtf in Resources */,
-				35F5ACBA16628DA500ED82B6 /* MainMenu.xib in Resources */,
+				35F5ACD516628FA800ED82B6 /* MainMenu.xib in Resources */,
+				35F5ACD616628FA800ED82B6 /* WindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,39 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35F5ACB016628DA500ED82B6 /* main.m in Sources */,
-				35F5ACB716628DA500ED82B6 /* AppDelegate.m in Sources */,
+				35F5ACD716628FA800ED82B6 /* AppDelegate.m in Sources */,
+				35F5ACD816628FA800ED82B6 /* main.m in Sources */,
+				35F5ACD916628FA800ED82B6 /* WindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		35F5ACAC16628DA500ED82B6 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35F5ACAD16628DA500ED82B6 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		35F5ACB216628DA500ED82B6 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35F5ACB316628DA500ED82B6 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		35F5ACB816628DA500ED82B6 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				35F5ACB916628DA500ED82B6 /* en */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		35F5ACBB16628DA500ED82B6 /* Debug */ = {
@@ -259,8 +250,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageAbstraction/ImageAbstraction-Prefix.pch";
-				INFOPLIST_FILE = "ImageAbstraction/ImageAbstraction-Info.plist";
+				GCC_PREFIX_HEADER = "ImageAbstraction/SupportingFiles/ImageAbstraction-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ImageAbstraction/SupportingFiles/ImageAbstraction-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -271,8 +262,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ImageAbstraction/ImageAbstraction-Prefix.pch";
-				INFOPLIST_FILE = "ImageAbstraction/ImageAbstraction-Info.plist";
+				GCC_PREFIX_HEADER = "ImageAbstraction/SupportingFiles/ImageAbstraction-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/ImageAbstraction/SupportingFiles/ImageAbstraction-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
