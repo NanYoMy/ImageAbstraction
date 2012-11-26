@@ -15,13 +15,8 @@
 @implementation WindowController
 
 - (id)init
-{
-	if (self = [super initWithWindowNibName:@"WindowController"]) {
-		// Enable full screen.
-		[self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
-	}
-	
-	return self;
+{	
+	return [super initWithWindowNibName:@"WindowController"];
 }
 
 - (void)openDocument:(id)sender

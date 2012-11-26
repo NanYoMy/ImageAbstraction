@@ -21,7 +21,7 @@
 	self.windowControllers = [[NSMutableArray alloc] init];
 	
 	// Create a new window.
-	[self newDocument:self];
+	[self newDocument:nil];
 }
 
 - (void)newDocument:(id)sender
@@ -29,10 +29,10 @@
 	// Create new window controller and set delegate.
 	WindowController *windowController = [[WindowController alloc] init];
 	windowController.window.delegate = self;
-
+	
 	// Add to list of window controllers and make its window visible.
 	[self.windowControllers addObject:windowController];
-	[windowController.window makeKeyAndOrderFront:self];
+	[windowController showWindow:nil];
 }
 
 #pragma mark - NSWindowDelegate
