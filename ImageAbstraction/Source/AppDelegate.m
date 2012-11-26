@@ -26,12 +26,21 @@
 
 - (void)newDocument:(id)sender
 {
-	// Create new window controller.
+	// Create new window controller and set delegate.
 	WindowController *windowController = [[WindowController alloc] init];
+	windowController.window.delegate = self;
 
 	// Add to list of window controllers and make its window visible.
 	[self.windowControllers addObject:windowController];
 	[windowController.window makeKeyAndOrderFront:self];
+}
+
+#pragma mark - NSWindowDelegate
+
+- (void)windowWillClose:(NSNotification *)notification
+{	
+	// Remove window's controller when closed.
+	[self.windowControllers removeObject:[[notification object] windowController]];
 }
 
 @end
