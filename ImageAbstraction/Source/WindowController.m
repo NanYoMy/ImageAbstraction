@@ -8,10 +8,6 @@
 
 #import "WindowController.h"
 
-@interface WindowController ()
-
-@end
-
 @implementation WindowController
 
 - (id)init
@@ -21,7 +17,12 @@
 
 - (void)openDocument:(id)sender
 {
-	NSLog(@"Load new image...");
+	
+}
+
+- (IBAction)pressed:(id)sender
+{
+	
 }
 
 @end

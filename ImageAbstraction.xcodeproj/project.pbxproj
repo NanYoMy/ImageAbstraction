@@ -104,8 +104,8 @@
 		35F5ACCC16628FA800ED82B6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				35F5ACCD16628FA800ED82B6 /* AppDelegate.h */,
 				35F5ACCE16628FA800ED82B6 /* AppDelegate.m */,
+				35F5ACCD16628FA800ED82B6 /* AppDelegate.h */,
 				35F5ACCF16628FA800ED82B6 /* main.m */,
 				35F5ACD016628FA800ED82B6 /* WindowController.h */,
 				35F5ACD116628FA800ED82B6 /* WindowController.m */,
