@@ -37,7 +37,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{128, 256}, {720, 480}}</string>
 				<int key="NSWTFlags">544735232</int>
-				<string key="NSWindowTitle">Window</string>
+				<string key="NSWindowTitle">Image Abstraction</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>

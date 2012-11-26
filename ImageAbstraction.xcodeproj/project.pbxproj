@@ -13,6 +13,7 @@
 		35F5ACD716628FA800ED82B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCE16628FA800ED82B6 /* AppDelegate.m */; };
 		35F5ACD816628FA800ED82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCF16628FA800ED82B6 /* main.m */; };
 		35F5ACD916628FA800ED82B6 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACD116628FA800ED82B6 /* WindowController.m */; };
+		35F5ACE016630BFB00ED82B6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACDF16630BFB00ED82B6 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		35F5ACD116628FA800ED82B6 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		35F5ACD316628FA800ED82B6 /* ImageAbstraction-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageAbstraction-Info.plist"; sourceTree = "<group>"; };
 		35F5ACD416628FA800ED82B6 /* ImageAbstraction-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageAbstraction-Prefix.pch"; sourceTree = "<group>"; };
+		35F5ACDF16630BFB00ED82B6 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				35F5ACD316628FA800ED82B6 /* ImageAbstraction-Info.plist */,
 				35F5ACD416628FA800ED82B6 /* ImageAbstraction-Prefix.pch */,
+				35F5ACDF16630BFB00ED82B6 /* Credits.rtf */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			files = (
 				35F5ACD516628FA800ED82B6 /* MainMenu.xib in Resources */,
 				35F5ACD616628FA800ED82B6 /* WindowController.xib in Resources */,
+				35F5ACE016630BFB00ED82B6 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +292,7 @@
 				35F5ACBF16628DA500ED82B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -16,7 +16,12 @@
 
 - (id)init
 {
-	return [super initWithWindowNibName:@"WindowController"];
+	if (self = [super initWithWindowNibName:@"WindowController"]) {
+		// Enable full screen.
+		[self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+	}
+	
+	return self;
 }
 
 - (void)openDocument:(id)sender
