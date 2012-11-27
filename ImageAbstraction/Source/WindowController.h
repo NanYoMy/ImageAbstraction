@@ -10,6 +10,8 @@
 
 @interface WindowController : NSWindowController
 
+@property (weak) IBOutlet NSImageView *imageView;
+
 - (void)openDocument:(id)sender;
 
 @end

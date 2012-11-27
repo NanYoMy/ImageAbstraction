@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35DFB0431664E710001BC456 /* WindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35DFB0421664E710001BC456 /* WindowController.mm */; };
+		35DFB0461664E8AC001BC456 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35DFB0441664E8AC001BC456 /* Image.cpp */; };
 		35F5ACA416628DA500ED82B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F5ACA316628DA500ED82B6 /* Cocoa.framework */; };
 		35F5ACD516628FA800ED82B6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACCA16628FA800ED82B6 /* MainMenu.xib */; };
 		35F5ACD616628FA800ED82B6 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACCB16628FA800ED82B6 /* WindowController.xib */; };
 		35F5ACD716628FA800ED82B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCE16628FA800ED82B6 /* AppDelegate.m */; };
 		35F5ACD816628FA800ED82B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACCF16628FA800ED82B6 /* main.m */; };
-		35F5ACD916628FA800ED82B6 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F5ACD116628FA800ED82B6 /* WindowController.m */; };
 		35F5ACE016630BFB00ED82B6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 35F5ACDF16630BFB00ED82B6 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35DFB0421664E710001BC456 /* WindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowController.mm; sourceTree = "<group>"; };
+		35DFB0441664E8AC001BC456 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
+		35DFB0451664E8AC001BC456 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
 		35F5AC9F16628DA500ED82B6 /* ImageAbstraction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageAbstraction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F5ACA316628DA500ED82B6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		35F5ACA616628DA500ED82B6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -28,7 +32,6 @@
 		35F5ACCE16628FA800ED82B6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		35F5ACCF16628FA800ED82B6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35F5ACD016628FA800ED82B6 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
-		35F5ACD116628FA800ED82B6 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		35F5ACD316628FA800ED82B6 /* ImageAbstraction-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ImageAbstraction-Info.plist"; sourceTree = "<group>"; };
 		35F5ACD416628FA800ED82B6 /* ImageAbstraction-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageAbstraction-Prefix.pch"; sourceTree = "<group>"; };
 		35F5ACDF16630BFB00ED82B6 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -106,9 +109,11 @@
 			children = (
 				35F5ACCE16628FA800ED82B6 /* AppDelegate.m */,
 				35F5ACCD16628FA800ED82B6 /* AppDelegate.h */,
-				35F5ACCF16628FA800ED82B6 /* main.m */,
+				35DFB0421664E710001BC456 /* WindowController.mm */,
 				35F5ACD016628FA800ED82B6 /* WindowController.h */,
-				35F5ACD116628FA800ED82B6 /* WindowController.m */,
+				35DFB0441664E8AC001BC456 /* Image.cpp */,
+				35DFB0451664E8AC001BC456 /* Image.h */,
+				35F5ACCF16628FA800ED82B6 /* main.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -189,7 +194,8 @@
 			files = (
 				35F5ACD716628FA800ED82B6 /* AppDelegate.m in Sources */,
 				35F5ACD816628FA800ED82B6 /* main.m in Sources */,
-				35F5ACD916628FA800ED82B6 /* WindowController.m in Sources */,
+				35DFB0431664E710001BC456 /* WindowController.mm in Sources */,
+				35DFB0461664E8AC001BC456 /* Image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
