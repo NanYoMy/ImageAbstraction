@@ -9,15 +9,15 @@
 #import "WindowController.h"
 #import "Image.h"
 
+@interface WindowController ()
+@property (strong) NSImage *original;
+@end
+
 @implementation WindowController
 
 - (id)init
 {
-	if (self = [super initWithWindowNibName:@"WindowController"]) {
-		self.isOriginal = YES;
-	}
-	
-	return self;
+	return [super initWithWindowNibName:@"WindowController"];
 }
 
 - (void)openDocument:(id)sender
@@ -32,9 +32,7 @@
 
 		// If successful, display image and create a backup.
 		if ([image isValid]) {
-			self.isOriginal = YES;
 			self.imageView.image = image;
-			self.original = image;
 		}
 	}
 }
@@ -50,13 +48,11 @@
 	
 		// Diplay new image.
 		self.imageView.image = [[NSImage alloc] initWithCGImage:newImageRef size:NSZeroSize];
-		self.isOriginal = NO;
 	}
 }
 
 - (IBAction)revertImage:(id)sender
 {
-	self.isOriginal = YES;
 	self.imageView.image = self.original;
 }
 
