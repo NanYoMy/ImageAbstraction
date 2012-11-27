@@ -28,13 +28,14 @@ CGImageRef Image::abstraction()
 	// Do something here...
 	
 	// Reconstruct image from edited data.
-	CGContextRef context = CGBitmapContextCreate(bytes,
-												 CGImageGetWidth(_image),
-												 CGImageGetHeight(_image),
-												 CGImageGetBitsPerComponent(_image),
-												 CGImageGetBytesPerRow(_image),
-												 CGImageGetColorSpace(_image),
-												 CGImageGetBitmapInfo(_image));
+	CGContextRef context = CGBitmapContextCreate(
+		bytes,
+		CGImageGetWidth(_image),
+		CGImageGetHeight(_image),
+		CGImageGetBitsPerComponent(_image),
+		CGImageGetBytesPerRow(_image),
+		CGImageGetColorSpace(_image),
+		CGImageGetBitmapInfo(_image));
 	
 	// New image.
 	CGImageRef image = CGBitmapContextCreateImage(context);
