@@ -8,9 +8,9 @@
 
 #include "Image.h"
 
-Image::Image(CGImageRef image)
+Image::Image(CGImageRef image) :
+	_image(CGImageCreateCopy(image))
 {
-	_image = CGImageCreateCopy(image);
 }
 
 Image::~Image()
