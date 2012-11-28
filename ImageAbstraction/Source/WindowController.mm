@@ -38,16 +38,19 @@
 }
 
 - (IBAction)abstractImage:(id)sender
-{
+{	
 	if (self.imageView.image) {
 		CGImageRef imageRef = [self.imageView.image CGImageForProposedRect:nil context:nil hints:nil];
 		
 		// Perform image abstraction.
 		Image image(imageRef);
-		CGImageRef newImageRef = image.abstraction();
+		CGImageRef newImageRef = image.createAbstraction();
 	
 		// Diplay new image.
 		self.imageView.image = [[NSImage alloc] initWithCGImage:newImageRef size:NSZeroSize];
+		
+		// Free created image.
+		CGImageRelease(newImageRef);
 	}
 }
 
