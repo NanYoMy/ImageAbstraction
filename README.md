@@ -7,5 +7,5 @@ Final project for CSC 205 2D Graphics and Image Processing. The algorithm used o
 
 References
 ==========
-- "Real-Time Video Abstraction": www.cs.northwestern.edu/~holger/Research/papers/videoabstraction.pdf
-- Colorspace conversion formulas: www.easyrgb.com
+"Real-Time Video Abstraction" - www.cs.northwestern.edu/~holger/Research/papers/videoabstraction.pdf
+Colorspace conversion formulas - www.easyrgb.com
