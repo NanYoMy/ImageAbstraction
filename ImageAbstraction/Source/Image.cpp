@@ -79,7 +79,7 @@ pixel3f *Image::createEdges(pixel3f *source)
 	
 	for (int i = 0; i < _size; i++) {
 		dog = gaussianE[i].L - t * gaussianR[i].L;
-		gaussianE[i].L = dog > 0.0f ? 100.0f : 100.0f + 100.0f * tanhf(2 * dog);
+		gaussianE[i].L = dog > 0.0f ? 0.0f : -100.0f * tanhf(2 * dog);
 	}
 	
 	delete[] gaussianR;
