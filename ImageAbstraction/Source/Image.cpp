@@ -26,7 +26,7 @@ CGImageRef Image::createAbstraction()
 	// Get mutable image data and create floating point array for colorspace conversions.
 	CFDataRef data = CGDataProviderCopyData(CGImageGetDataProvider(_image));
 	CFMutableDataRef mutableData = CFDataCreateMutableCopy(NULL, CFDataGetLength(data), data);
-	pixel4i *rgbPixels = (pixel4i *) CFDataGetMutableBytePtr(mutableData);
+	pixel4b *rgbPixels = (pixel4b *) CFDataGetMutableBytePtr(mutableData);
 	pixel3f *labPixels = new pixel3f[_size];
 	
 	// Convert from RGB to Lab colorspace to perform operations on lightness channel.
@@ -79,7 +79,7 @@ pixel3f *Image::createEdges(pixel3f *source)
 	
 	for (int i = 0; i < _size; i++) {
 		dog = gaussianE[i].L - t * gaussianR[i].L;
-		gaussianE[i].L = dog > 0 ? 100 : 100 + 100 * tanhf(2 * dog);
+		gaussianE[i].L = dog > 0.0f ? 100.0f : 100.0f + 100.0f * tanhf(2 * dog);
 	}
 	
 	delete[] gaussianR;
@@ -136,21 +136,21 @@ pixel3f *Image::gaussian(pixel3f *source, float sigma)
 	return gaussian;
 }
 
-void Image::RGBtoLab(pixel4i *source, pixel3f *destination)
+void Image::RGBtoLab(pixel4b *source, pixel3f *destination)
 {
 	RGBtoXYZ(source, destination);
 	XYZtoLab(destination);
 }
 
-void Image::LabtoRGB(pixel3f *source, pixel4i *destination)
+void Image::LabtoRGB(pixel3f *source, pixel4b *destination)
 {
 	LabtoXYZ(source);
 	XYZtoRGB(source, destination);
 }
 
-void Image::RGBtoXYZ(pixel4i *source, pixel3f *destination)
+void Image::RGBtoXYZ(pixel4b *source, pixel3f *destination)
 {
-	pixel4i *s;
+	pixel4b *s;
 	pixel3f *d;
 	float r, g, b;
 	
@@ -169,10 +169,10 @@ void Image::RGBtoXYZ(pixel4i *source, pixel3f *destination)
 	}
 }
 
-void Image::XYZtoRGB(pixel3f *source, pixel4i *destination)
+void Image::XYZtoRGB(pixel3f *source, pixel4b *destination)
 {
 	pixel3f *s;
-	pixel4i *d;
+	pixel4b *d;
 	float r, g, b;
 	
 	for (s = source, d = destination; s != source + _size; s++, d++) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		356F6A651666DD4100D97DA5 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 356F6A641666DD4100D97DA5 /* ImageView.m */; };
 		35DFB0431664E710001BC456 /* WindowController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 35DFB0421664E710001BC456 /* WindowController.mm */; };
 		35DFB0461664E8AC001BC456 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35DFB0441664E8AC001BC456 /* Image.cpp */; };
 		35F5ACA416628DA500ED82B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F5ACA316628DA500ED82B6 /* Cocoa.framework */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		356F6A631666DD4100D97DA5 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
+		356F6A641666DD4100D97DA5 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		35DFB0421664E710001BC456 /* WindowController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowController.mm; sourceTree = "<group>"; };
 		35DFB0441664E8AC001BC456 /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
 		35DFB0451664E8AC001BC456 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				35F5ACCD16628FA800ED82B6 /* AppDelegate.h */,
 				35DFB0421664E710001BC456 /* WindowController.mm */,
 				35F5ACD016628FA800ED82B6 /* WindowController.h */,
+				356F6A631666DD4100D97DA5 /* ImageView.h */,
+				356F6A641666DD4100D97DA5 /* ImageView.m */,
 				35DFB0441664E8AC001BC456 /* Image.cpp */,
 				35DFB0451664E8AC001BC456 /* Image.h */,
 				35F5ACCF16628FA800ED82B6 /* main.m */,
@@ -196,6 +201,7 @@
 				35F5ACD816628FA800ED82B6 /* main.m in Sources */,
 				35DFB0431664E710001BC456 /* WindowController.mm in Sources */,
 				35DFB0461664E8AC001BC456 /* Image.cpp in Sources */,
+				356F6A651666DD4100D97DA5 /* ImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

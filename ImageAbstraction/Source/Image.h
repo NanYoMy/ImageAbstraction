@@ -17,9 +17,9 @@ typedef union pixel3f {
 	struct { float X, Y, Z; };
 } pixel3f;
 
-typedef struct pixel4i {
+typedef struct pixel4b {
 	UInt8 r, g, b, a;
-} pixel4i;
+} pixel4b;
 
 class Image {
 public:
@@ -37,10 +37,10 @@ private:
 	pixel3f *pixelAt(pixel3f *, int, int);
 	pixel3f *createEdges(pixel3f *);
 	pixel3f *gaussian(pixel3f *, float);
-	void RGBtoLab(pixel4i *, pixel3f *);
-	void LabtoRGB(pixel3f *, pixel4i *);
-	void RGBtoXYZ(pixel4i *, pixel3f *);
-	void XYZtoRGB(pixel3f *, pixel4i *);
+	void RGBtoLab(pixel4b *, pixel3f *);
+	void LabtoRGB(pixel3f *, pixel4b *);
+	void RGBtoXYZ(pixel4b *, pixel3f *);
+	void XYZtoRGB(pixel3f *, pixel4b *);
 	void LabtoXYZ(pixel3f *);
 	void XYZtoLab(pixel3f *);
 };

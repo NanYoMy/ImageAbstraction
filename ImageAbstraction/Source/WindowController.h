@@ -7,10 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ImageView.h"
 
-@interface WindowController : NSWindowController
+@interface WindowController : NSWindowController <ImageViewDelegate>
 
-@property (weak) IBOutlet NSImageView *imageView;
+@property BOOL isAbstract;
+@property (weak) IBOutlet ImageView *imageView;
 
 - (void)openDocument:(id)sender;
 
