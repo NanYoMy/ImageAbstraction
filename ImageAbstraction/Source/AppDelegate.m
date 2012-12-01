@@ -24,6 +24,8 @@
 	[self newDocument:nil];
 }
 
+#pragma mark - Responder Chain
+
 - (void)newDocument:(id)sender
 {
 	// Create new window controller and set delegate.
@@ -35,7 +37,7 @@
 	[windowController showWindow:nil];
 }
 
-#pragma mark - NSWindowDelegate
+#pragma mark - NSWindow Delegate
 
 - (void)windowWillClose:(NSNotification *)notification
 {	

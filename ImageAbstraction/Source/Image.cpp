@@ -22,7 +22,7 @@ Image::~Image()
 }
 
 CGImageRef Image::createAbstraction()
-{
+{	
 	// Get mutable image data and create floating point array for colorspace conversions.
 	CFDataRef data = CGDataProviderCopyData(CGImageGetDataProvider(_image));
 	CFMutableDataRef mutableData = CFDataCreateMutableCopy(NULL, CFDataGetLength(data), data);
@@ -71,34 +71,39 @@ pixel3f *Image::pixelAt(pixel3f *pixels, int x, int y)
 pixel3f *Image::createEdges(pixel3f *source)
 {
 	float sigma = 2.0f;
-	float t = 0.98f;
+	float tau = 0.98f;
+	float phi = 2.0f;
 	float dog;
 	
-	pixel3f *gaussianE = gaussian(source, sigma);
-	pixel3f *gaussianR = gaussian(source, sqrtf(1.6) * sigma);
+	pixel3f *gaussianE = createGaussian(source, sigma);
+	pixel3f *gaussianR = createGaussian(source, sqrtf(1.6) * sigma);
 	
 	for (int i = 0; i < _size; i++) {
-		dog = gaussianE[i].L - t * gaussianR[i].L;
-		gaussianE[i].L = dog > 0.0f ? 0.0f : -100.0f * tanhf(2 * dog);
+		// Difference of gaussians mapped to a smoothed step function.
+		dog = gaussianE[i].L - tau * gaussianR[i].L;
+		gaussianE[i].L = dog > 0.0f ? 100.0f : 100.0f * (1.0f + tanhf(phi * dog));
 	}
-	
+
 	delete[] gaussianR;
 	
 	return gaussianE;
 }
 
-pixel3f *Image::gaussian(pixel3f *source, float sigma)
+#pragma mark - Filters
+
+pixel3f *Image::createGaussian(pixel3f *source, float sigma)
 {
 	pixel3f *gaussian = new pixel3f[_size]();
 	pixel3f *temp = new pixel3f[_size]();
-		
+	
 	// Precompute constants.
-	float sigmaSquared = sigma * sigma;
-	float denomiator = 2 * M_PI * sigmaSquared;
+	float variance = sigma * sigma;
+	float denomiator = 2 * M_PI * variance;
 
 	// Radius of filter.
 	int r = 3.0f * sigma;
-
+	float *kernel = createGaussianKernel(r + 1, variance);
+	
 	// Sum of filtered neighbouring pixels' lightness.
 	float sum;
 	
@@ -108,7 +113,7 @@ pixel3f *Image::gaussian(pixel3f *source, float sigma)
 			sum = 0;
 			
 			for (int i = -r; i <= r; i++) {
-				sum += pixelAt(source, x + i, y)->L * expf(-0.5f * i * i / sigmaSquared);
+				sum += pixelAt(source, x + i, y)->L * kernel[abs(i)];
 			}
 			
 			// Do not divide by the regular denominator.
@@ -122,7 +127,7 @@ pixel3f *Image::gaussian(pixel3f *source, float sigma)
 			sum = 0;
 			
 			for (int j = -r; j <= r; j++) {
-				sum += pixelAt(temp, x, y + j)->L * expf(-0.5f * j * j / sigmaSquared);
+				sum += pixelAt(temp, x, y + j)->L * kernel[abs(j)];
 			}
 			
 			// Divided by the denominator square only once rather than twice as is.
@@ -131,10 +136,25 @@ pixel3f *Image::gaussian(pixel3f *source, float sigma)
 	}
 	
 	// Free temporary data.
+	delete[] kernel;
 	delete[] temp;
 	
 	return gaussian;
 }
+
+float* Image::createGaussianKernel(int size, float variance)
+{
+	float *kernel = new float[size];
+	variance *= -2.0f;
+	
+	for (int i = 0; i < size; i++) {
+		kernel[i] = expf(i * i / variance);
+	}
+	
+	return kernel;
+}
+
+#pragma mark - Colorspace Conversions
 
 void Image::RGBtoLab(pixel4b *source, pixel3f *destination)
 {
