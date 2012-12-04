@@ -150,7 +150,6 @@ void Image::quantize(uint n)
 	}
 	
 	std::set<float> bins;
-
 	float binWidth = 100.0f / n;
 	
 	for (size_t i = 0; i <= n; i++) {
