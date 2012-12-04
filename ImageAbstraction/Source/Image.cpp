@@ -10,9 +10,13 @@
 #include <set>
 
 // Constant coefficients used for bilateral filtering.
-#define bRADIUS 6
-#define bVARIANCE 9.0f
-#define bPHOTOMETRIC -36.125
+#define RADIUS 6
+#define VARIANCE 9.0f
+#define PHOTOMETRIC -36.125
+
+// Constant coefficient for difference of gaussian edges.
+#define SIGMA 2.0f
+#define TAU 0.98f
 
 Image::Image(CGImageRef image) :
 	_width(CGImageGetWidth(image)),
@@ -66,6 +70,7 @@ CGImageRef Image::createAbstraction(float stylization, uint quantization)
 	// Convert back to RGB colorspace.
 	LabtoRGB(_pixels, rgbPixels);
 	
+	// Create an image from the modified data.
 	CGContextRef context = CGBitmapContextCreate(
 		rgbPixels,
 		_width,
@@ -85,8 +90,8 @@ CGImageRef Image::createAbstraction(float stylization, uint quantization)
 
 void Image::bilateral()
 {
-	memcpy(_copy, _pixels, _width * _height * sizeof(pixel3f));
-	float *kernel = createGaussianKernel(bRADIUS + 1, bVARIANCE);
+	// Gaussian kernel used to model geometric similarity.
+	float *kernel = createGaussianKernel(RADIUS + 1, VARIANCE);
 	
 	for (int x = 0; x < _width; x++) {
 		for (int y = 0; y < _height; y++) {
@@ -94,17 +99,19 @@ void Image::bilateral()
 			float numerator = 0;
 			float denominator = 0;
 			
-			for (int i = -bRADIUS; i <= bRADIUS; i++) {
+			for (int i = -RADIUS; i <= RADIUS; i++) {
 				pixel3f *neighbor = pixelAt(_pixels, x + i, y);
 				
+				// Compute euclidean distance between Lab colors to determine photometric similarity.
 				float dL = center->L - neighbor->L;
 				float da = center->a - center->a;
 				float db = center->b - center->b;
 				float distance = dL * dL + da * da + db * db;
 				
-				float photometric = expf(distance / bPHOTOMETRIC);
+				float photometric = expf(distance / PHOTOMETRIC);
 				float similarity = photometric * kernel[abs(i)];
 				
+				// Denominator serves to normalize values.
 				denominator += similarity;
 				numerator += similarity * neighbor->L;
 			}
@@ -123,7 +130,7 @@ void Image::bilateral()
 			float numerator = 0;
 			float denominator = 0;
 			
-			for (int j = -bRADIUS; j <= bRADIUS; j++) {
+			for (int j = -RADIUS; j <= RADIUS; j++) {
 				pixel3f *neighbor = pixelAt(_copy, x, y + j);
 				
 				float dL = center->L - neighbor->L;
@@ -131,7 +138,7 @@ void Image::bilateral()
 				float db = center->b - center->b;
 				float distance = dL * dL + da * da + db * db;
 				
-				float photometric = expf(distance / bPHOTOMETRIC);
+				float photometric = expf(distance / PHOTOMETRIC);
 				float similarity = photometric * kernel[abs(j)];
 				
 				denominator += similarity;
@@ -141,6 +148,8 @@ void Image::bilateral()
 			pixelAt(_pixels, x, y)->L = numerator / denominator;
 		}
 	}
+	
+	delete[] kernel;
 }
 
 void Image::quantize(uint n)
@@ -150,9 +159,9 @@ void Image::quantize(uint n)
 	}
 	
 	std::set<float> bins;
-
 	float binWidth = 100.0f / n;
-	
+
+	// Create bin values.
 	for (size_t i = 0; i <= n; i++) {
 		bins.insert(binWidth * i);
 	}
@@ -161,6 +170,7 @@ void Image::quantize(uint n)
 		std::set<float>::iterator i = bins.upper_bound(p->L);
 		float nearest;
 		
+		// Determine the nearest bin value.
 		if (i == bins.end()) {
 			nearest = *(i--);
 		} else {
@@ -169,6 +179,7 @@ void Image::quantize(uint n)
 			nearest = p->L - floor < ceilling - p->L ? floor : ceilling;
 		}
 		
+		// Smooth quantization.
 		p->L = nearest + (binWidth / 2.0f) * tanhf(p->L - nearest);
 	}
 }
@@ -185,15 +196,12 @@ void Image::overlayEdges(pixel3f *edges)
 
 pixel3f *Image::createEdges(float stylization)
 {
-	float sigma = 2.0f;
-	float tau = 0.98f;
-	
-	pixel3f *gaussianE = createGaussian(sigma);
-	pixel3f *gaussianR = createGaussian(sqrtf(1.6) * sigma);
+	pixel3f *gaussianE = createGaussian(SIGMA);
+	pixel3f *gaussianR = createGaussian(sqrtf(1.6) * SIGMA);
 	
 	for (int i = 0; i < _width * _height; i++) {
 		// Difference of gaussians mapped to a smoothed step function.
-		float dog = gaussianE[i].L - tau * gaussianR[i].L;
+		float dog = gaussianE[i].L - TAU * gaussianR[i].L;
 		gaussianE[i].L = dog > 0.0f ? 100.0f : 100.0f * (1.0f + tanhf(stylization * dog));
 	}
 

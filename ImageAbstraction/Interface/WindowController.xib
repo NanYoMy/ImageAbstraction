@@ -72,7 +72,7 @@
 							<object class="NSSlider" key="NSToolbarItemView" id="184147435">
 								<reference key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
-								<string key="NSFrame">{{0, 14}, {96, 21}}</string>
+								<string key="NSFrame">{{0, 14}, {100, 21}}</string>
 								<reference key="NSSuperview"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -99,7 +99,7 @@
 							<nil key="NSToolbarItemTarget"/>
 							<nil key="NSToolbarItemAction"/>
 							<string key="NSToolbarItemMinSize">{32, 21}</string>
-							<string key="NSToolbarItemMaxSize">{96, 36}</string>
+							<string key="NSToolbarItemMaxSize">{100, 36}</string>
 							<bool key="NSToolbarItemEnabled">YES</bool>
 							<bool key="NSToolbarItemAutovalidates">YES</bool>
 							<int key="NSToolbarItemTag">0</int>
@@ -180,9 +180,9 @@
 									<string key="NSContents"/>
 									<string key="NSCellIdentifier">_NS:9</string>
 									<reference key="NSControlView" ref="6800999"/>
-									<double key="NSMaxValue">5</double>
-									<double key="NSMinValue">0.5</double>
-									<double key="NSValue">2.75</double>
+									<double key="NSMaxValue">3</double>
+									<double key="NSMinValue">0.0</double>
+									<double key="NSValue">1.5</double>
 									<double key="NSAltIncValue">0.0</double>
 									<int key="NSNumberOfTickMarks">0</int>
 									<int key="NSTickMarkPosition">1</int>
@@ -311,7 +311,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
+					<array key="NSToolbarIBAllowedItems">
 						<reference ref="571486393"/>
 						<reference ref="1045250698"/>
 						<reference ref="484290504"/>
