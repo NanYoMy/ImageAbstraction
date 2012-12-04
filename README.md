@@ -6,9 +6,13 @@ images in this program is based on the process described in "Real-Time Video Abs
 
 This program creates a cartoon-like image abstraction from a given input image. This is achieved with 
 several applications of a seperable approximation to a bilateral filter, lightness quantization, 
-and overlayed difference-of-Gaussians edges.
+and overlayed difference of Gaussians edges.
 
-All calculations are done in CIE L*a*b* colorspace.
+The CIE L*a*b* color space is used to faciliate determining photometric similarity between colors. 
+Photometric similarity is used in the bilateral filtering process and can be easily obtained by 
+taking the Euclidean distance between two L*a*b* colors.
+
+All image processing is done on a background thread to ensure the user interface remains responsive at all times.
 
 References
 ==========
