@@ -18,7 +18,7 @@ minimum and maximum value.
 
 All image processing is done on a seperate thread to ensure the user interface remains responsive at all times.
 
-> Note: This project use ARC (automatic reference counting) and can only be compiled with Xcode versions 4.2+
+__Note__: This project use ARC (automatic reference counting) and can only be compiled with Xcode versions 4.2+
 
 References
 ==========
