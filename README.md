@@ -3,6 +3,7 @@ Image Abstraction
 
 Final project for CSC 205 2D Graphics and Image Processing. The algorithm used on images in this program is based on the process described in "Real-Time Video Abstraction".
 
+Creates a cartoon-like image abstraction from a given input image. This is achieved with several applications of a seperable approximation to a bilateral filter, lightness quantizations, and overlayed difference-of-Gaussians edges.
 
 
 References
