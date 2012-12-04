@@ -9,11 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "ImageView.h"
 
-@interface WindowController : NSWindowController <ImageViewDelegate>
+@interface WindowController : NSWindowController <ImageViewDelegate, NSWindowDelegate>
 
 @property BOOL isAbstract;
 @property BOOL isAbstractable;
 
+- (void)resumeActivity;
 - (void)openDocument:(id)sender;
 
 @end

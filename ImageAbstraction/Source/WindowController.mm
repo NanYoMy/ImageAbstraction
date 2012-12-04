@@ -16,6 +16,7 @@
 @property (weak) IBOutlet ImageView *imageView;
 @property (weak) IBOutlet NSSlider *stylizationSlider;
 @property (weak) IBOutlet NSSlider *quantizationSlider;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 
 @end
 
@@ -32,6 +33,15 @@
 	
 	// Set self as image view's delegate to capture the resulting image of a drag operation.
 	self.imageView.delegate = self;
+	self.progressIndicator.hidden = YES;
+}
+
+- (void)resumeActivity
+{
+	// Progress indicators are paused when full screen is entered.
+	if (!self.progressIndicator.isHidden) {
+		[self.progressIndicator startAnimation:nil];
+	}
 }
 
 #pragma mark - Responder Chain
@@ -54,6 +64,19 @@
 	}
 }
 
+- (void)saveDocument:(id)sender
+{
+	// Create a panel to save the image.
+	NSSavePanel *savePanel = [[NSSavePanel alloc] init];
+	savePanel.allowedFileTypes = [NSArray arrayWithObjects:@"png", @"tif", @"tiff", @"jpg", @"jpeg", nil];
+
+	// Save file!
+	if ([savePanel runModal]) {
+		NSData *data = [self.imageView.image TIFFRepresentation];
+		[data writeToURL:[savePanel URL] atomically:NO];
+	}
+}
+
 #pragma mark - ImageViewDelegate
 
 - (void)didOpenNewImage
@@ -61,6 +84,9 @@
 	self.original = self.imageView.image;
 	self.isAbstract = NO;
 	self.isAbstractable = YES;
+	
+	self.progressIndicator.hidden = YES;
+	[self.progressIndicator stopAnimation:nil];
 }
 
 #pragma mark - Target-Action
@@ -72,6 +98,8 @@
 	}
 	
 	// The image to be abstracted is the current image displayed.
+	[self.progressIndicator startAnimation:nil];
+	self.progressIndicator.hidden = NO;
 	self.imageID = [self.imageView.image hash];
 	self.isAbstractable = NO;
 	
@@ -96,6 +124,9 @@
 				self.isAbstract = YES;
 				self.isAbstractable = YES;
 			}
+			
+			self.progressIndicator.hidden = YES;
+			[self.progressIndicator stopAnimation:nil];
 			
 			// Free created image.
 			CGImageRelease(newImageRef);

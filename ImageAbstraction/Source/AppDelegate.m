@@ -45,4 +45,9 @@
 	[self.windowControllers removeObject:[[notification object] windowController]];
 }
 
+- (void)windowDidEnterFullScreen:(NSNotification *)notification
+{
+	[[[notification object] windowController] resumeActivity];
+}
+
 @end
