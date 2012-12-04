@@ -8,6 +8,7 @@ This program creates a cartoon-like image abstraction from a given input image. 
 several applications of a seperable approximation to a bilateral filter, lightness quantization, 
 and overlayed difference-of-Gaussians edges.
 
+All calculations are done in CIE L*a*b* colorspace.
 
 References
 ==========
