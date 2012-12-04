@@ -12,7 +12,7 @@
 @interface WindowController : NSWindowController <ImageViewDelegate>
 
 @property BOOL isAbstract;
-@property (weak) IBOutlet ImageView *imageView;
+@property BOOL isAbstractable;
 
 - (void)openDocument:(id)sender;
 

@@ -10,7 +10,7 @@
 
 @protocol ImageViewDelegate <NSObject>
 
-- (void)imageFromDragOperation:(NSImage *)image;
+- (void)didOpenNewImage;
 
 @end
 

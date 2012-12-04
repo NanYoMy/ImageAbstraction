@@ -14,7 +14,7 @@
 {
 	// Notify delegate that a new image has been set by a drag operation.
 	[super concludeDragOperation:sender];
-	[self.delegate imageFromDragOperation:self.image];
+	[self.delegate didOpenNewImage];
 }
 
 @end

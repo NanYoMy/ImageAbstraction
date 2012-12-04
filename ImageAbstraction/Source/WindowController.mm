@@ -13,6 +13,9 @@
 
 @property NSInteger imageID;
 @property (strong) NSImage *original;
+@property (weak) IBOutlet ImageView *imageView;
+@property (weak) IBOutlet NSSlider *stylizationSlider;
+@property (weak) IBOutlet NSSlider *quantizationSlider;
 
 @end
 
@@ -23,20 +26,12 @@
 	return [super initWithWindowNibName:@"WindowController"];
 }
 
-- (void)dealloc
-{	
-	[self.imageView removeObserver:self forKeyPath:@"image"];
-}
-
 - (void)windowDidLoad
 {
 	[super windowDidLoad];
 	
 	// Set self as image view's delegate to capture the resulting image of a drag operation.
 	self.imageView.delegate = self;
-	
-	// Register as observer of the image view's image.
-	[self.imageView addObserver:self forKeyPath:@"image" options:nil context:nil];
 }
 
 #pragma mark - Responder Chain
@@ -45,7 +40,7 @@
 {
 	// Create a panel to open an image.
 	NSOpenPanel *openPanel = [[NSOpenPanel alloc] init];
-	openPanel.allowedFileTypes = [NSArray arrayWithObjects:@"png", @"tif", @"jpg", nil];
+	openPanel.allowedFileTypes = [NSArray arrayWithObjects:@"png", @"tif", @"tiff", @"jpg", @"jpeg", nil];
 		
 	if ([openPanel runModal]) {
 		// Open selected image.
@@ -53,53 +48,50 @@
 
 		// If successful, display image and create a backup.
 		if ([image isValid]) {
-			self.imageView.image = image;
-			self.original = image;
+			self.imageView.image = image;			
+			[self didOpenNewImage];
 		}
 	}
 }
 
-#pragma mark - Key-Value Observing
+#pragma mark - ImageViewDelegate
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)didOpenNewImage
 {
-	if ([keyPath isEqualToString:@"image"]) {
-		// Use negative number to ensure it is an invalid hash code.
-		self.imageID = -1;
-		self.isAbstract = NO;
-	}
-}
-
-#pragma mark - ImageView Delegate
-
-- (void)imageFromDragOperation:(NSImage *)image
-{
-	self.original = image;	
+	self.original = self.imageView.image;
+	self.isAbstract = NO;
+	self.isAbstractable = YES;
 }
 
 #pragma mark - Target-Action
 
-- (IBAction)abstractImage:(NSButton *)sender
+- (IBAction)abstractImage:(id)sender
 {
 	if (self.imageView.image) {
 		// The image to be abstracted is the current image displayed.
 		self.imageID = [self.imageView.image hash];
+		self.isAbstractable = NO;
 		
-		// Acquire underlying image reference and create a queue for asynchronous execution.
+		// Acquire underlying image reference and create a queue for asynchronous abstraction.
 		CGImageRef imageRef = [self.imageView.image CGImageForProposedRect:nil context:nil hints:nil];
 		dispatch_queue_t abstractionQueue = dispatch_queue_create("ca.uvic.leons.abstraction", nil);
 		
 		dispatch_async(abstractionQueue, ^{
 			// Create image abstraction.
 			Image image(imageRef);
-			CGImageRef newImageRef = image.createAbstraction();
+			
+			// As the number of bins approaches inifity, quantization has no effect.
+			// Pass 0 to disable quantization for max quantization value.
+			uint quantization = self.quantizationSlider.intValue == self.quantizationSlider.maxValue ? 0 : self.quantizationSlider.intValue;
+			CGImageRef newImageRef = image.createAbstraction(self.stylizationSlider.floatValue, quantization);
 			
 			// UI related code must be on the main thread.
 			dispatch_async(dispatch_get_main_queue(), ^{
 				// Only display abstraction if it corresponds to the current image.
-				if (self.imageID & [self.imageView.image hash]) {
+				if (self.imageID == [self.imageView.image hash]) {
 					self.imageView.image = [[NSImage alloc] initWithCGImage:newImageRef size:NSZeroSize];
 					self.isAbstract = YES;
+					self.isAbstractable = YES;
 				}
 				
 				// Free created image.
@@ -109,9 +101,11 @@
 	}
 }
 
-- (IBAction)revertImage:(NSButton *)sender
+- (IBAction)revertImage:(id)sender
 {
 	self.imageView.image = self.original;
+	self.isAbstract = NO;
+	self.isAbstractable = YES;
 }
 
 @end

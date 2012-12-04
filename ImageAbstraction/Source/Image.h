@@ -24,24 +24,43 @@ class Image {
 public:
 	Image(CGImageRef);
 	~Image();
-	CGImageRef createAbstraction();
+	CGImageRef createAbstraction(float, uint);
 
 private:
-	CGImageRef _image;
+	CFMutableDataRef _data;
 	size_t _width;
 	size_t _height;
-	size_t _size;
+	size_t _bitsPerComponent;
+	size_t _bytesPerRow;
+	CGColorSpaceRef _colorSpaceRef;
+	CGBitmapInfo _bitmapInfo;
+	pixel3f *_pixels;
+	pixel3f *_copy;
 	
-	pixel3f *pixelAt(pixel3f *, int, int);
-	pixel3f *createEdges(pixel3f *);
-	pixel3f *createGaussian(pixel3f *, float);
-	float *createGaussianKernel(int, float);
+	void bilateral();
+	void quantize(uint);
+	void overlayEdges(pixel3f *);
+	pixel3f *createEdges(float);
+	pixel3f *createGaussian(float);
+	float *createGaussianKernel(uint, float);
+	
 	void RGBtoLab(pixel4b *, pixel3f *);
 	void LabtoRGB(pixel3f *, pixel4b *);
 	void RGBtoXYZ(pixel4b *, pixel3f *);
 	void XYZtoRGB(pixel3f *, pixel4b *);
 	void LabtoXYZ(pixel3f *);
 	void XYZtoLab(pixel3f *);
+	
+	inline pixel3f *pixelAt(pixel3f *pixels, int x, int y)
+	{
+		if (x < 0) x = 0;
+		else if (x >= _width) x = (int) _width - 1;
+		
+		if (y < 0) y = 0;
+		else if (y >= _height) y = (int) _height - 1;
+		
+		return pixels + x + y * _width;
+	}
 };
 
 #endif /* defined(__ImageAbstraction__Image__) */
