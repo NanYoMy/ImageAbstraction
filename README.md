@@ -20,7 +20,7 @@ All image processing is done on a seperate thread to ensure the user interface r
 
 __Note__: This project use ARC (automatic reference counting) and can only be compiled with Xcode versions 4.2+
 
-----
+-----
 
 References
 ==========
