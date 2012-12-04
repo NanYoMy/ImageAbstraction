@@ -12,7 +12,11 @@ The CIE L*a*b* color space is used to faciliate determining photometric similari
 Photometric similarity is used in the bilateral filtering process and can be easily obtained by 
 taking the Euclidean distance between two L*a*b* colors.
 
-All image processing is done on a background thread to ensure the user interface remains responsive at all times.
+Two sliders allow the user to adjust the prominence of edges and the number of quantization bins. 
+The user can choose to omit edges and quantization entirely by setting their respective sliders to their
+minimum and maximum value.
+
+All image processing is done on a seperate thread to ensure the user interface remains responsive at all times.
 
 References
 ==========
