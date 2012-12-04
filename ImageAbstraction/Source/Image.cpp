@@ -58,9 +58,7 @@ CGImageRef Image::createAbstraction(float stylization, uint quantization)
 	bilateral();
 	
 	// Quantize lightness channel.
-	if (quantization) {
-		quantize(quantization);
-	}
+	quantize(quantization);
 	 
 	// Overlay edges.
 	overlayEdges(edges);
@@ -146,7 +144,11 @@ void Image::bilateral()
 }
 
 void Image::quantize(uint n)
-{	
+{
+	if (!n) {
+		return;
+	}
+	
 	std::set<float> bins;
 
 	float binWidth = 100.0f / n;

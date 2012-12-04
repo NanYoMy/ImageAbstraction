@@ -67,38 +67,40 @@
 
 - (IBAction)abstractImage:(id)sender
 {
-	if (self.imageView.image) {
-		// The image to be abstracted is the current image displayed.
-		self.imageID = [self.imageView.image hash];
-		self.isAbstractable = NO;
-		
-		// Acquire underlying image reference and create a queue for asynchronous abstraction.
-		CGImageRef imageRef = [self.imageView.image CGImageForProposedRect:nil context:nil hints:nil];
-		dispatch_queue_t abstractionQueue = dispatch_queue_create("ca.uvic.leons.abstraction", nil);
-		
-		dispatch_async(abstractionQueue, ^{
-			// Create image abstraction.
-			Image image(imageRef);
-			
-			// As the number of bins approaches inifity, quantization has no effect.
-			// Pass 0 to disable quantization for max quantization value.
-			uint quantization = self.quantizationSlider.intValue == self.quantizationSlider.maxValue ? 0 : self.quantizationSlider.intValue;
-			CGImageRef newImageRef = image.createAbstraction(self.stylizationSlider.floatValue, quantization);
-			
-			// UI related code must be on the main thread.
-			dispatch_async(dispatch_get_main_queue(), ^{
-				// Only display abstraction if it corresponds to the current image.
-				if (self.imageID == [self.imageView.image hash]) {
-					self.imageView.image = [[NSImage alloc] initWithCGImage:newImageRef size:NSZeroSize];
-					self.isAbstract = YES;
-					self.isAbstractable = YES;
-				}
-				
-				// Free created image.
-				CGImageRelease(newImageRef);
-			});
-		});
+	if (!self.imageView.image) {
+		return;
 	}
+	
+	// The image to be abstracted is the current image displayed.
+	self.imageID = [self.imageView.image hash];
+	self.isAbstractable = NO;
+	
+	// Acquire underlying image reference and create a queue for asynchronous abstraction.
+	CGImageRef imageRef = [self.imageView.image CGImageForProposedRect:nil context:nil hints:nil];
+	dispatch_queue_t abstractionQueue = dispatch_queue_create("ca.uvic.leons.abstraction", nil);
+	
+	dispatch_async(abstractionQueue, ^{
+		// Create image abstraction.
+		Image image(imageRef);
+		
+		// As the number of bins approaches inifity, quantization has no effect.
+		// Pass 0 to disable quantization for max quantization value.
+		uint quantization = self.quantizationSlider.intValue == self.quantizationSlider.maxValue ? 0 : self.quantizationSlider.intValue;
+		CGImageRef newImageRef = image.createAbstraction(self.stylizationSlider.floatValue, quantization);
+		
+		// UI related code must be on the main thread.
+		dispatch_async(dispatch_get_main_queue(), ^{
+			// Only display abstraction if it corresponds to the current image.
+			if (self.imageID == [self.imageView.image hash]) {
+				self.imageView.image = [[NSImage alloc] initWithCGImage:newImageRef size:NSZeroSize];
+				self.isAbstract = YES;
+				self.isAbstractable = YES;
+			}
+			
+			// Free created image.
+			CGImageRelease(newImageRef);
+		});
+	});
 }
 
 - (IBAction)revertImage:(id)sender
