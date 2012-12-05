@@ -47,6 +47,7 @@
 
 - (void)windowDidEnterFullScreen:(NSNotification *)notification
 {
+	// Resume any paused UI elements.
 	[[[notification object] windowController] resumeActivity];
 }
 
