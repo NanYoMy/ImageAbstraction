@@ -136,6 +136,12 @@
 
 - (IBAction)revertImage:(id)sender
 {
+	// Stop and hide progress indicator if current shown and animating.
+	if (!self.progressIndicator.isHidden) {
+		self.progressIndicator.hidden = YES;
+		[self.progressIndicator stopAnimation:nil];
+	}
+	
 	self.imageView.image = self.original;
 	self.isAbstract = NO;
 	self.isAbstractable = YES;
