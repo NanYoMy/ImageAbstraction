@@ -20,6 +20,9 @@ All image processing is done on a separate thread to ensure the user interface r
 
 __Note__: This project use ARC (automatic reference counting) and can only be compiled with Xcode versions 4.2+.
 
+As a course requirement, all image processing related code is written in C++ while everything else is written in 
+Objective-C.
+
 References
 ==========
 - "Real-Time Video Abstraction": www.cs.northwestern.edu/~holger/Research/papers/videoabstraction.pdf
